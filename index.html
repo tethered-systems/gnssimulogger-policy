@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GNSS IMU Logger – Privacy Policy</title>
+<style>
+  :root { --navy: #0B1A2B; --accent: #0277BD; --text: #1d2733; --muted: #5b6b7c; }
+  body { font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: var(--text);
+         max-width: 760px; margin: 0 auto; padding: 24px 20px 64px; line-height: 1.6; }
+  header { background: linear-gradient(180deg, #0B1A2B, #132F4C); color: #fff; margin: -24px -20px 28px;
+           padding: 32px 20px 24px; }
+  header h1 { margin: 0 0 4px; font-size: 1.7rem; }
+  header p { margin: 0; color: #B0C4DE; }
+  h2 { color: var(--navy); border-bottom: 2px solid #e3eaf1; padding-bottom: 4px; margin-top: 2rem; font-size: 1.25rem; }
+  table { border-collapse: collapse; width: 100%; margin: 0.8rem 0; font-size: 0.95rem; }
+  th, td { border: 1px solid #d5dee8; padding: 8px 10px; text-align: left; vertical-align: top; }
+  th { background: #f1f5f9; }
+  a { color: var(--accent); }
+  .muted { color: var(--muted); font-size: 0.9rem; }
+  .placeholder { background: #fff3cd; padding: 0 4px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>GNSS IMU Logger – Privacy Policy</h1>
+  <p>Effective date: 6 October 2026</p>
+</header>
+
+<p>GNSS IMU Logger ("the app") is published by <span class="placeholder">tethered.systems</span> ("we", "us"). It records
+satellite-navigation, motion-sensor and cellular-network data on your phone for navigation research and teaching, as a
+companion to the book <em>Introduction to Inertial Navigation and Kalman Filters</em>. This policy explains what data the app
+handles, where it goes, and the choices you have.</p>
+
+<p><strong>In short:</strong> the recordings the app makes stay on your phone. We do not run any server, we do not
+receive your recordings, and there are no accounts. The app contacts third parties only to download satellite data, for
+correction services you configure yourself, and to show advertising (Google AdMob).</p>
+
+<h2>1. Data the app records on your device</h2>
+<p>When you press <em>Start Logging</em>, the app writes a log file to the app's own folder on your phone
+(<code>Android/media/com.gnssimulogger/GnssImuLogs</code>). A log file can contain:</p>
+<table>
+  <tr><th>Data</th><th>Why</th></tr>
+  <tr><td>Precise location: raw GNSS (GPS, Galileo, BeiDou, QZSS, GLONASS) measurements and the phone's own position fixes</td>
+      <td>The purpose of the app: recording and computing your position and trajectory</td></tr>
+  <tr><td>Motion sensors: accelerometer, gyroscope, magnetometer, barometer</td>
+      <td>Inertial navigation and sensor-fusion research</td></tr>
+  <tr><td>Cellular network information: identities of nearby mobile-network cells, signal strengths and timing advance</td>
+      <td>Research into positioning from mobile-network signals</td></tr>
+  <tr><td>Correction data received from a correction service you configure (NTRIP), and downloaded satellite orbit data</td>
+      <td>Improving position accuracy</td></tr>
+  <tr><td>Camera feature positions (only if you switch on camera tracking): the pixel coordinates of tracked image
+      features and the camera's calibration. Camera images are processed on the phone and are never stored, logged or
+      transmitted.</td>
+      <td>Research into camera-aided (visual-inertial) navigation</td></tr>
+  <tr><td>Demo video (only if you switch on "Record a demo video"): an MP4 recording of the camera view, saved beside
+      the log on your phone. It can show people, vehicles and number plates nearby. It is never uploaded by the app.</td>
+      <td>Making demonstration videos of the navigation results</td></tr>
+  <tr><td>Phone model and Android version; the session's settings</td>
+      <td>Interpreting the recording correctly</td></tr>
+  <tr><td>Diagnostic and crash reports (text files)</td>
+      <td>Troubleshooting</td></tr>
+</table>
+<p>Because a log contains your precise location over time, it can reveal places you have been. Log files are
+<strong>not uploaded anywhere by the app</strong>. They leave your phone only if you choose to copy or share them, for
+example to analyse them on a computer. Treat them as you would any location history.</p>
+<p>The app also stores its settings on your device, including any correction-service credentials, access token and OpenCellID key you
+enter a learned magnetometer calibration and a cache of looked-up cell positions.</p>
+
+<h2>2. Network connections made by the app</h2>
+<table>
+  <tr><th>Service</th><th>When</th><th>What is sent</th></tr>
+  <tr><td>Satellite orbit data downloads: BKG (igs.bkg.bund.de) and NASA CDDIS (cddis.nasa.gov)</td>
+      <td>While logging, about every 10 minutes</td>
+      <td>Standard web requests for public files. CDDIS requests include the NASA Earthdata access token you entered.
+          No location data is sent.</td></tr>
+  <tr><td>NTRIP correction service (a caster you choose and configure)</td>
+      <td>While logging, if you enabled it</td>
+      <td>Your caster user name, password and chosen stream (mountpoint). The app does not send your position to the
+          caster.</td></tr>
+  <tr><td>SUPL assistance server (default supl.google.com)</td>
+      <td>Only if you enable SUPL in the settings (off by default)</td>
+      <td>An approximate location (latitude/longitude), which the protocol requires to return the satellite data for
+          your area.</td></tr>
+  <tr><td>OpenCellID (opencellid.org, operated by Unwired Labs)</td>
+      <td>Only if you enter an OpenCellID API key (off by default)</td>
+      <td>Your API key and the identity of the mobile-network cell your phone is connected to (country, network, area and
+          cell number), to look up the cell's estimated position. A cell identity indicates your approximate location.
+          Results are cached on your phone so each cell is looked up only once.</td></tr>
+  <tr><td>Google AdMob (advertising)</td>
+      <td>Whenever ads are shown</td>
+      <td>See section 3.</td></tr>
+</table>
+<p>Every connection reveals your IP address to the server contacted, as with any internet use. These services are
+operated by third parties under their own privacy policies.</p>
+
+<h2>3. Advertising</h2>
+<p>The app shows ads provided by Google AdMob. To serve and measure ads, and to prevent fraud, the Google Mobile Ads SDK
+collects and processes data such as your device's advertising ID, IP address (from which an approximate location can be
+derived), device and app information, and interactions with ads. The SDK is not given access to the app's log files or
+GNSS data. Google's use of this data is described at
+<a href="https://policies.google.com/technologies/partner-sites">How Google uses information from sites or apps that use
+its services</a> and in the <a href="https://policies.google.com/privacy">Google Privacy Policy</a>.</p>
+<p>You can reset your advertising ID or opt out of personalised ads in your phone's settings
+(<em>Settings → Privacy → Ads</em>, or <em>Settings → Google → Ads</em>, depending on your phone).</p>
+
+<h2>4. Permissions</h2>
+<ul>
+  <li><strong>Location (precise):</strong> to read GNSS measurements, position fixes and cellular-cell information.</li>
+  <li><strong>High sampling rate sensors:</strong> to record motion sensors at full rate.</li>
+  <li><strong>Camera (optional):</strong> only if you switch on camera tracking, to track features in the view ahead of
+      a phone mounted on the windscreen. Images never leave the processing step on the phone.</li>
+  <li><strong>Internet / network state:</strong> for the downloads, correction services and ads described above.</li>
+  <li><strong>Foreground service (location, and camera when camera tracking is on), notifications, wake lock:</strong> to keep logging while the screen is off, with a
+      visible notification while it runs.</li>
+</ul>
+<p>Location is used only while you are logging, and a notification is shown for the whole time.</p>
+
+<h2>5. Sharing and sale of data</h2>
+<p>We do not sell personal data, and we do not share your recordings with anyone. The only data shared with third
+parties is that described in sections 2 and 3.</p>
+
+<h2>6. Retention and deletion</h2>
+<p>Log files and settings remain on your phone until you delete them. You can delete individual log files with any file
+manager, or remove everything by clearing the app's storage or uninstalling the app. We hold no copy, so there is nothing
+for us to delete on request. Data collected by Google for advertising is retained under Google's policies.</p>
+
+<h2>7. Children</h2>
+<p>The app is a technical tool for adults and students of navigation engineering and is not directed at children under
+13. We do not knowingly collect data from children.</p>
+
+<h2>8. Security</h2>
+<p>All network connections use encryption where the service supports it (HTTPS for downloads; TLS for SUPL). NTRIP casters
+commonly use unencrypted connections, a limitation of the NTRIP protocol, so use a password that is unique to your caster
+account.</p>
+
+<h2>9. Changes to this policy</h2>
+<p>We will post any changes on this page and update the effective date above.</p>
+
+<h2>10. Contact</h2>
+<p>Questions about this policy: <span class="placeholder">tethered.systems@gmail.com</span></p>
+
+<p class="muted">GNSS IMU Logger · application id com.gnssimulogger</p>
+</body>
+</html>
